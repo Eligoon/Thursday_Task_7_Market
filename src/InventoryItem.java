@@ -1,11 +1,11 @@
 public class InventoryItem
 {
     private String name;
-    private int price;
-    private int salePrice;
+    private double price;
+    private double salePrice;
     private boolean isOnSale;
 
-    public InventoryItem(String name, int price, int salePrice, boolean isOnSale)
+    public InventoryItem(String name, double price, double salePrice, boolean isOnSale)
     {
         this.name = name;
         this.price = price;
@@ -21,7 +21,7 @@ public class InventoryItem
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -29,7 +29,7 @@ public class InventoryItem
         this.price = price;
     }
 
-    public int getSalePrice() {
+    public double getSalePrice() {
         return salePrice;
     }
 
