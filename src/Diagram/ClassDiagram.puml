@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+Registrer --> Inventory
+Registrer --> Basket
+Basket *-- BasketEntry
+Inventory *-- InventoryItem
+BasketEntry --> InventoryItem
+
+
+class InventoryItem
+{
+ - name
+ - regularPrice
+ - salePrice
+ - isOnSale
+}
+
+class Registrer
+{
+- inventory : Inventory
+scan(basket : Basket)
+calculateTotals()
+printReceipt()
+}
+
+class Inventory
+{
+- allItems : Collection<InventoryItem>
+- saleItems : Collection<InventoryItem>
+}
+
+class Basket
+{
+- entries : Collection<BasketEntry>
+}
+
+class BasketEntry
+{
+- item : InventoryItem
+- quantity
+}
+@enduml
