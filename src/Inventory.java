@@ -10,13 +10,13 @@ public class Inventory
     private Collection<InventoryItem> allItems = new ArrayList<>();
     private Collection<InventoryItem> saleItems = new ArrayList<>();
 
-    public Inventory()
+    public void loadInventory()
     {
-        loadNormalItems("groceries.csv");
+        loadRegularItems("groceries.csv");
         loadSaleItems("sale.csv");
     }
 
-    private void loadNormalItems(String filename)
+    private void loadRegularItems(String filename)
     {
         try
         {
