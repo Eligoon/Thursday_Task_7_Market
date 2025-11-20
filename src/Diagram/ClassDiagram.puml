@@ -1,12 +1,22 @@
 @startuml
 'https://plantuml.com/class-diagram
-
+Robot <-- Main
+Registrer <-- Main
 Registrer --> Inventory
 Registrer --> Basket
 Basket *-- BasketEntry
 Inventory *-- InventoryItem
 BasketEntry --> InventoryItem
 
+
+class Main
+{
+- main()
+}
+
+class Robot
+{
+}
 
 class InventoryItem
 {
@@ -26,18 +36,15 @@ class Registrer
 - Map<String, BasketEntry> entries
 + void scanBasket()
 + double calculateTotals()
-printReceipt()
++ void printReceipt()
 }
 
 class Inventory
 {
 - Collection<InventoryItem> allItems
-- Collection<InventoryItem> saleItems
 + void loadInventory()
-- void loadRegularItem()
-- void loadSaleItem()
-+ Collection<InventoryItem> getRegularItems()
-+ Collection<InventoryItem> getSaleItems()
++ void loadRegularItem()
++ void loadSaleItem()
 }
 
 class Basket
