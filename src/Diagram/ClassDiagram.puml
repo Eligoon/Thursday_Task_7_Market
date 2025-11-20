@@ -10,34 +10,51 @@ BasketEntry --> InventoryItem
 
 class InventoryItem
 {
- - name
- - regularPrice
- - salePrice
- - isOnSale
+ - String name
+ - double regularPrice
+ - double salePrice
+ - boolean isOnSale
+ + String getName()
+ + double getRegularPrice()
+ + double getSalePrice()
+ + boolean isOnSale()
+ + double getPriceToUse()
 }
 
 class Registrer
 {
-- inventory : Inventory
-scan(basket : Basket)
-calculateTotals()
+- Map<String, BasketEntry> entries
++ void scanBasket()
++ double calculateTotals()
 printReceipt()
 }
 
 class Inventory
 {
-- allItems  Collection<InventoryItem>
-- saleItems Collection<InventoryItem>
+- Collection<InventoryItem> allItems
+- Collection<InventoryItem> saleItems
++ void loadInventory()
+- void loadRegularItem()
+- void loadSaleItem()
++ Collection<InventoryItem> getRegularItems()
++ Collection<InventoryItem> getSaleItems()
 }
 
 class Basket
 {
-- entries Collection<BasketEntry>
+- Map<String, BasketEntry> entries
++ void getItem()
++ Collection<BasketEntry> getEntries()
 }
 
 class BasketEntry
 {
-- item InventoryItem
-- quantity
+- InventoryItem item
+- int quantity
++ InventoryItem getItem()
++ int getQuantity()
++ void increaseQuantity(int amount)
++ double getPriceToUse()
++ double getTotalSaved()
 }
 @enduml
