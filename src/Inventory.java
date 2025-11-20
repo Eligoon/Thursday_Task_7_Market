@@ -18,8 +18,10 @@ public class Inventory
 
 
 
-    Inventory inventory = new Inventory();
+    Inventory inventory = new Inventory(loadInventory(),);
+
     Path path = Paths.get("groceries.csv");
+
     public void loadInventory()
     {
     try
