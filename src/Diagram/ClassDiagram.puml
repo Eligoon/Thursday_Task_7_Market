@@ -26,18 +26,18 @@ printReceipt()
 
 class Inventory
 {
-- allItems : Collection<InventoryItem>
-- saleItems : Collection<InventoryItem>
+- allItems  Collection<InventoryItem>
+- saleItems Collection<InventoryItem>
 }
 
 class Basket
 {
-- entries : Collection<BasketEntry>
+- entries Collection<BasketEntry>
 }
 
 class BasketEntry
 {
-- item : InventoryItem
+- item InventoryItem
 - quantity
 }
 @enduml
