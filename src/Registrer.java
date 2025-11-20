@@ -33,7 +33,7 @@ public class Registrer
             totalSaved += be.getTotalSaved();
         }
 
-        System.out.println("Total saved: " + totalSaved);
+        System.out.println("Total saved: " + totalSaved + " kr.");
 
         return total;
     }
@@ -51,19 +51,19 @@ public class Registrer
 
             subTotal = be.getPriceToUse() * be.getQuantity();
 
-            System.out.println(be.getQuantity() + " x " + be.getPriceToUse() + " = " + subTotal);
+            System.out.println(be.getQuantity() + " x " + be.getPriceToUse() + " = " + subTotal + " kr.");
 
             if(be.getTotalSaved() > 0)
             {
-                System.out.println("Discount: -" + be.getTotalSaved());
+                System.out.println("Discount: -" + be.getTotalSaved() + " kr.");
             }
 
             total += subTotal;
             totalSaved += be.getTotalSaved();
         }
 
-        System.out.println("Total saved: " + totalSaved);
-        System.out.println("Grand total: " + total);
+        System.out.println("Total saved: " + totalSaved + " kr.");
+        System.out.println("Grand total: " + total + " kr.");
     }
 }
 
