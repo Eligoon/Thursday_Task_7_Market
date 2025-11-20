@@ -1,50 +1,73 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Inventory
 {
-    List<InventoryItem> allItems;
-    List<InventoryItem> saleItems;
+    private Collection<InventoryItem> allItems = new ArrayList<>();
+    private Collection<InventoryItem> saleItems = new ArrayList<>();
 
-
-    public Inventory(List<InventoryItem> allItems, List<InventoryItem> saleItems)
+    public Inventory()
     {
-        this.allItems = allItems;
-        this.saleItems = saleItems;
+        loadNormalItems("groceries.csv");
+        loadSaleItems("sale.csv");
     }
 
-
-
-    Inventory inventory = new Inventory(loadInventory(),);
-
-    Path path = Paths.get("groceries.csv");
-
-    public void loadInventory()
+    private void loadNormalItems(String filename)
     {
-    try
-    {
-        List<String> lines = Files.readAllLines(path);
-
-        // Skip the header
-        for (int i = 1; i < lines.size(); i++)
+        try
         {
-            String line = lines.get(i);
-            String[] parts = line.split(";");
+            List<String> lines = Files.readAllLines(Path.of(filename));
 
-            String name = parts[1].trim();
-            double price = Double.parseDouble(parts[3].trim());
+            for (int i = 1; i < lines.size(); i++)
+            {
+                String[] parts = lines.get(i).split(";");
 
-            InventoryItem item = new InventoryItem(name, price, price, false);
-            inventory.getAllItems().add(item);
+                String name = parts[1].trim();
+                double price = Double.parseDouble(parts[2].trim());
+
+                allItems.add(new InventoryItem(name, price, price, false));
+            }
+        }
+        catch (IOException e)
+        {
+            System.out.println("Could not read regular items");
         }
     }
-    catch (IOException e)
-    {
-        System.out.println("File could not be found");
-    }
-}
 
+    private void loadSaleItems(String filename)
+    {
+        try
+        {
+            List<String> lines = Files.readAllLines(Path.of(filename));
+
+            for (int i = 1; i < lines.size(); i++)
+            {
+                String[] parts = lines.get(i).split(";");
+
+                String name = parts[1].trim();
+                double regularPrice = Double.parseDouble(parts[2].trim());
+                double salePrice = Double.parseDouble(parts[3].trim());
+
+                saleItems.add(new InventoryItem(name, regularPrice, salePrice, true));
+            }
+        }
+        catch (IOException e)
+        {
+            System.out.println("Could not read sale items");
+        }
+    }
+
+    public Collection<InventoryItem> getAllItems()
+    {
+        return allItems;
+    }
+
+    public Collection<InventoryItem> getSaleItems()
+    {
+        return saleItems;
+    }
 }
