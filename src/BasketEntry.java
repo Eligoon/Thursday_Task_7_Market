@@ -16,6 +16,12 @@ public class BasketEntry
         return item;
     }
 
+    // Return the item's name directly, helper method to reduce chaining
+    public String getName()
+    {
+        return item.getName();
+    }
+
     // Return the quantity of this item in the basket
     public int getQuantity()
     {
