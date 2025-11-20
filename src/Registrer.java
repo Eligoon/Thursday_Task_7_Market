@@ -38,6 +38,33 @@ public class Registrer
         return total;
     }
 
+    public void printReceipt()
+    {
+        double subTotal;
+        double total = 0;
+        double totalSaved = 0;
+
+
+        for(BasketEntry be : entries.values())
+        {
+            System.out.println(be.getItem().getName());
+
+            subTotal = be.getPriceToUse() * be.getQuantity();
+
+            System.out.println(be.getQuantity() + " x " + be.getPriceToUse() + " = " + subTotal);
+
+            if(be.getTotalSaved() > 0)
+            {
+                System.out.println("Discount: -" + be.getTotalSaved());
+            }
+
+            total += subTotal;
+            totalSaved += be.getTotalSaved();
+        }
+
+        System.out.println("Total saved: " + totalSaved);
+        System.out.println("Grand total: " + total);
+    }
 }
 
 
