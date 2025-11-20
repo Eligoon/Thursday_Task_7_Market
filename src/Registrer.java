@@ -22,4 +22,22 @@ public class Registrer
         }
     }
 
+    public double calculateTotal()
+    {
+        double total = 0;
+        double totalSaved = 0;
+
+        for (BasketEntry be : entries.values())  // entries = your TreeMap
+        {
+            total += be.getPriceToUse() * be.getQuantity();
+            totalSaved += be.getTotalSaved();
+        }
+
+        System.out.println("Total saved: " + totalSaved);
+
+        return total;
+    }
+
 }
+
+
