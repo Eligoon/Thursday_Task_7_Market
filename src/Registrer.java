@@ -11,7 +11,7 @@ public class Registrer
     {
         for (BasketEntry be : basket.getEntries())
         {
-            String name = be.getItem().getName();
+            String name = be.getName();
 
             // Increment quantity if item already exists
             if (entries.containsKey(name))
@@ -52,7 +52,7 @@ public class Registrer
 
         for(BasketEntry be : entries.values())
         {
-            System.out.println(be.getItem().getName());
+            System.out.println(be.getName());
 
             // Calculate subtotal for this item
             subTotal = be.getPriceToUse() * be.getQuantity();
