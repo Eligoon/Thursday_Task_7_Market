@@ -45,5 +45,14 @@ public class InventoryItem
         }
     }
 
+    public void setSalePrice(double salePrice)
+    {
+        this.salePrice = salePrice;
+    }
+
+    public void setOnSale(boolean onSale)
+    {
+        this.onSale = onSale;
+    }
 }
 
