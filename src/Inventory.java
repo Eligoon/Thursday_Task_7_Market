@@ -8,7 +8,7 @@ public class Inventory
 {
     private Collection<InventoryItem> allItems;
 
-    public void loadInventory()
+    public Inventory()
     {
         allItems = new ArrayList<>();
     }
