@@ -23,4 +23,30 @@
         {
             this.quantity += amount;
         }
+
+        public double getPriceToUse()
+        {
+            if (item.isOnSale())
+            {
+                return item.getSalePrice();
+            }
+            else
+            {
+                return item.getRegularPrice();
+            }
+        }
+
+        public double getTotalSaved()
+        {
+            if (item.isOnSale())
+            {
+                return (item.getRegularPrice() - item.getSalePrice()) * quantity;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+
     }
